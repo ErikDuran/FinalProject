@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <style>
+    input[type=text], select {
+    width: 50%;
+    padding: 5px 10px;
+    display: inline-block;
+    border: solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+   input[type=password] {
+    width: 50%;
+    padding: 5px 10px;
+    display: inline-block;
+    border: solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 50%;
+    background-color: #f44336;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #4CAF50;
+}
+
+div {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+}
+        h1{
+        color: #f44336;
+        }
+.button {
+    background-color: #f44336; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+} 
+    a:visited { 
+    color: white;
+}
+ .topcorner{
+   position:absolute;
+   top:0;
+   right:0;
+  } 
+.left{
+        padding-right:1100px;
+}
+    </style>
+    
+<head>
+  <title>PCracking</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+    <div id="user_nav" class="topcorner">
+  <% if current_user %>
+    Signed in as <strong><%= current_user.name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out", :class=>'button'   %>
+    <%= link_to 'New Password', new_password_path, :class=>'button' %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", :class=>'button'  %>
+  <% end %>
+        </div>
+</head>
+<body>
+<a href="passwords/home"><h1 class="left">PCracking</h1></a>
+    <h6 class="left">A Password Manager Website!</h6>
+    <hr >
+<%= yield %>
+
+    
+
+</body>
+</html>

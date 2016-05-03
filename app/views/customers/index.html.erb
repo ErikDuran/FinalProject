@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #f44336;
+    color: white;
+}  
+.button {
+    background-color: #f44336; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+} 
+    a:visited { 
+    color: white;
+}
+</style>
+<h1>Customers List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer ID</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= customer.FirstName %></td>
+        <td><%= customer.LastName %></td>
+        <td><%= customer.Email %></td>  
+        <td><%= '********' %></td>
+          <td><%= link_to 'Show', customer, :class=>'button' %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer), :class=>'button' %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'button' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_customer_path, :class=>'button' %>

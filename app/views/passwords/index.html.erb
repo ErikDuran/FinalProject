@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #f44336;
+    color: white;
+}  
+    a { 
+    color: white;
+        }
+        a:visited { 
+    color: white;
+}
+
+</style>
+<h1>Listing Passwords</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Group</th>
+      <th>UserName</th>
+      <th>Password</th>    
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @passwords.each do |password| %>
+      <tr>
+          <td><%= password.Title %></td>
+          <td><%= password.Group %></td>
+          <td><%= password.UserName %></td>
+          <td><%= '*********'%></td>
+        <td><%= link_to 'Show', password, :class=>'button' %></td>
+        <td><%= link_to 'Edit', edit_password_path(password), :class=>'button' %></td>
+        <td><%= link_to 'Destroy', password, method: :delete, data: { confirm: 'Are you sure?' }, :class=>'button' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Password', new_password_path, :class=>'button' %>
